@@ -51,20 +51,20 @@ function ToggleFormRadios(formElement, formState) {
   if (formState == "true") {
     checkableElements.forEach((element) => {
       if (!element.checked) {
-        // cacher les radio non-sélectionnés et leur label
+        // cacher les elem. non-sélectionnés et leur label
         element.parentElement.classList.add("d-none");
-      } else {
-        // cacher tous les radio (dont celui selectionné)
+      } else if (element.type == "radio") {
+        // cacher tous les elem. (dont celui selectionné)
         element.classList.add("d-none");
       }
     });
   } else {
     checkableElements.forEach((element) => {
       if (!element.checked) {
-        // cacher les radio non-sélectionnés et leur label
+        // cacher les elem. non-sélectionnés et leur label
         element.parentElement.classList.remove("d-none");
       } else {
-        // cacher tous les radio (dont celui selectionné)
+        // cacher tous les elem. (dont celui selectionné)
         element.classList.remove("d-none");
       }
     });
@@ -142,8 +142,9 @@ function toggleFormEdition(btnElement) {
   ToggleFormRadios(formElement, formState);
   // modifier les buttons
   toggleFormButtons(formElement, formState);
-  // TODO : invoquer une alert
-  //showFormAlert(btnElement);
+
+  // TODO: produce alert
+  // showFormAlert(btnElement);
 
   // modifier l'état du form déclaré dans le DOM (son attibut data-editable)
   //formState = formState == "true" ? "false" : "true";
