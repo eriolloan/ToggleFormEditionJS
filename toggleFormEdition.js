@@ -142,8 +142,9 @@ function toggleFormEdition(btnElement) {
   ToggleFormRadios(formElement, formState);
   // modifier les buttons
   toggleFormButtons(formElement, formState);
-  // invoquer une alert
-  showFormAlert(btnElement);
+  // TODO : invoquer une alert
+  //showFormAlert(btnElement);
+
   // modifier l'état du form déclaré dans le DOM (son attibut data-editable)
   //formState = formState == "true" ? "false" : "true";
   if (formState == "true") {
