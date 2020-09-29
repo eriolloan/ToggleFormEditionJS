@@ -184,7 +184,7 @@ Ces opérations ne sont à réaliser qu'une seule fois pour tout le projet.
                     />
         		    <label class="mb-0" for="choix_B"> B </label>
         	    </div>
-        	    <div class="d-flex flex-row mb-3 ml-3 mr-3 ml-md-0 mr-md-0">
+        	    <div class="row flex-row mb-3 ml-3 mr-3 ml-md-0 mr-md-0">
               		<input
               			class="afpanize switch mr-3"
                 		type="checkbox"
@@ -206,7 +206,7 @@ Ces opérations ne sont à réaliser qu'une seule fois pour tout le projet.
 
 ### MISE EN PLACE DÉTAILLÉE:
 
-1. Dans le HTML ajouter l'attribut ```data-editable="false"``` dans la balise d'ouverture du \<form>
+1. Dans le HTML ajouter l'attribut ```data-editable="true"``` dans la balise d'ouverture du \<form>
 
 2. Chaque \<input> doit être groupé avec le \<label> qui lui correspond dans une \<div>. La div doit avoir les classes ```d-flex flex-column``` si elle contient des type TEXT, NUMBER, EMAIL, TEL, etc... et les classes ```d-flex flex-row align-items-baseline``` si elle contient des type RADIO ou CHECKBOX.
     
@@ -239,10 +239,14 @@ Ces opérations ne sont à réaliser qu'une seule fois pour tout le projet.
         >
             Annuler
         </button>
-3. Appeler la fonction **toggleFormEdition()** avec le onclick des deux boutons et passer l'argument "**this**" à chaque fois (**this** étant le bouton qui fait l'appel de fonction, ce qui permet à la fonction de trouver le formulaire auquel appartient ce bouton).
+3. Créer deux boutons appelant la fonction **toggleFormEdition()** avec *onclick* et passer l'argument "**this**" à chaque fois (**this** étant le bouton qui fait l'appel de fonction, ce qui permet à la fonction de trouver le formulaire auquel appartient ce bouton).
 
         <button onclick="toggleFormEdition(this)">
-        
+4. Pour verrouiller le formulaire au chargement de la page, plutôt que de mettre le *data-editable* à *true* dans le HTML, (ce qui ne permettrait pas à la fonction de s'executer et d'appliquer ses modifications) il faut appeller la fonction dans une balise script (ou l'appeller dans le fichier .js de la fonctionnalité) en lui passant un sélecteur (l'ID dans l'exemple suivant).
+
+        <script>
+        	toggleFormEdition(document.getElementById("mon_formulaire"))
+        </script>
 
 ### Détails de fonctionnement
 L'appel de la fonction permet d'alterner entre un formulaire actif et éditable et un formulaire vérouillé en :
